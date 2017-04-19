@@ -1,2 +1,2 @@
 # Projeto 1
-Fiz umas merdinhas no header.hh
+Fiz umas merdinhas no header.h
