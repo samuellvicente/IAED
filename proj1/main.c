@@ -6,6 +6,7 @@ void executa_A();
 void executa_B();
 void executa_X();
 
+//asdasd
 
 int main() {
     char command;
