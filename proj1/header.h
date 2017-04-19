@@ -12,4 +12,6 @@ typedef struct msg {
 unsigned short u[MAX_USR];
 Msg m[MAX_MSG];
 
+int command_A();
+
 #endif
