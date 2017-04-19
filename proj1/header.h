@@ -1,17 +1,15 @@
 #ifndef HEADER
 #define HEADER
-#define MAX_FRASE
-
+#define MAX_FRASE 140
+#define MAX_USR 1000
+#define MAX_MSG 10000
 
 typedef struct msg {
-    User u; // < 1000 && >= 0
-    char frase[MAX_FRASE];
-
+    unsigned short uid; // < 1000 && >= 0
+    char frase[MAX_FRASE + 1];
 } Msg;
 
-typedef struct user {
-    int id; // < 1000 && >= 0
-    int activity;
-} User;
+unsigned short u[MAX_USR];
+Msg m[MAX_MSG];
 
 #endif
