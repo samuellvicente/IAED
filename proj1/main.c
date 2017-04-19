@@ -6,8 +6,6 @@ void executa_A();
 void executa_B();
 void executa_X();
 
-//lololollo
-
 int main() {
     char command;
     while (1) {
