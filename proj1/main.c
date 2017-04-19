@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 
+
 void executa_A();
 void executa_B();
 void executa_X();
