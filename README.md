@@ -1,4 +1,2 @@
 # IAED
-
-O rafael é gay.
-
+Um repositório para os projectos de IAED
