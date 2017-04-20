@@ -17,7 +17,7 @@ typedef struct msg {
 unsigned short user_list[MAX_USR];
 Msg message_list[MAX_MSG];
 unsigned short longest_msg; // guarda o tamanho da maior msg
-
+unsigned short index_msg; // posicao no vetor da ultima msg
 
 // PROTOTIPOS #####CHECKAR SE SAO REALMENTE TODAS VOID OU NAO##### 
 
