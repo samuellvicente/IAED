@@ -36,4 +36,18 @@ int forum() {
             }
     }
     return EXIT_FAILURE; // sai do programa com algo que correu mal
-}    
+}
+
+void execute_A() {
+    unsigned short a;
+    char c;
+
+    scanf("%hu", &message_list[index_msg].sender_id); // guarda sender_id
+    getchar();
+
+    for(a = 0; (c = getchar()) != '\n'; message_list[index_msg].message[a++] = c); // guarda msg
+    v[a] = '\0';
+
+    if(a > longest_msg) // atualiza longest_msg
+        longest_msg = a;
+}
