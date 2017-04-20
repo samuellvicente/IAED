@@ -32,7 +32,7 @@ int forum() {
                     execute_X();  // executa a funcao responsavel por processar o comando 'X' 
                     return EXIT_SUCCESS;  //sai do programa com sucesso
                 default:
-                    puts("ERRO: Comando desconhecido");
+                    puts("ERRO: Comando desconhecido\n");
             }
     }
     return EXIT_FAILURE; // sai do programa com algo que correu mal
