@@ -12,17 +12,18 @@ typedef struct msg {
 } Msg;
 
 
-// VARIAVEIS UNIVERSAIS
+// VARIAVEIS GLOBAIS
 
 unsigned short user_list[MAX_USR];
 Msg message_list[MAX_MSG];
+unsigned short longest_msg; // guarda o tamanho da maior msg
 
 
 // PROTOTIPOS #####CHECKAR SE SAO REALMENTE TODAS VOID OU NAO##### 
 
 
 int forum();
-    void execute_A(); 
+void execute_A(); 
     void execute_L();
     void execute_U();
     void execute_O();

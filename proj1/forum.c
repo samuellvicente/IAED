@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "header.h"
 
 int forum() {
     char command;
@@ -36,4 +35,4 @@ int forum() {
             }
     }
     return EXIT_FAILURE; // sai do programa com algo que correu mal
-}
+}    
