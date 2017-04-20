@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "header.h" 
 
 int forum() {
     char command;
@@ -31,7 +32,7 @@ int forum() {
                     execute_X();  // executa a funcao responsavel por processar o comando 'X' 
                     return EXIT_SUCCESS;  //sai do programa com sucesso
                 default:
-                    puts("ERRO: Comando desconhecido");
+                    puts("ERRO: Comando desconhecido"); // caso o comando nao seja reconhecido imprime na consola uma mensagem de erro
             }
     }
     return EXIT_FAILURE; // sai do programa com algo que correu mal
