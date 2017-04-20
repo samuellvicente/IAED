@@ -23,7 +23,7 @@ unsigned short longest_msg; // guarda o tamanho da maior msg
 
 
 int forum();
-void execute_A(); 
+    void execute_A(); 
     void execute_L();
     void execute_U();
     void execute_O();
