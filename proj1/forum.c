@@ -46,7 +46,7 @@ void execute_A() {
     getchar();
 
     for(a = 0; (c = getchar()) != '\n'; message_list[index_msg].message[a++] = c); // guarda msg
-    message_list[index_msg].message[a] = '\0';
+    message_list[index_msg++].message[a] = '\0';
 
     if(a > longest_msg) // atualiza longest_msg
         longest_msg = a;
