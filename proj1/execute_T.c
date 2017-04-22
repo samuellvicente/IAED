@@ -8,5 +8,6 @@ void execute_T(){
     
     for (user = 0; user < MAX_USR; user++)
         if (user_list[user] == max_entry)
-            for(unsigned short i = 0; message_list[i].message[0] != '\0' && i < MAX_MSG; user == message_list[i].user_id ? printf("*MOST ACTIVE USER:%hu:%s", user, message_list[i++].message) : i++);
+            printf("*MOST ACTIVE USER:%hu:%hu\n",user, user_list[user]);
 }
+
