@@ -11,6 +11,7 @@ int forum() {
                     execute_A();  // executa a funcao responsavel por processar o comando 'A'
                     break;        // caso execute sai do loop para procurar o proximo comando
                 case 'L':
+                    getchar();    // elimina '\n'
                     execute_L();  // executa a funcao responsavel por processar o comando 'L'                  
                     break;        // caso execute sai do loop para procurar o proximo comando
                 case 'U':
@@ -37,5 +38,4 @@ int forum() {
     }
     return EXIT_FAILURE; // sai do programa com algo que correu mal
 }
-
 
