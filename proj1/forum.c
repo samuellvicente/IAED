@@ -33,6 +33,7 @@ int forum() {
                     execute_X();  // executa a funcao responsavel por processar o comando 'X' 
                     return EXIT_SUCCESS;  //sai do programa com sucesso
                 default:
+                    getchar();
                     puts("ERRO: Comando desconhecido"); // caso o comando nao seja reconhecido imprime na consola uma mensagem de erro
             }
     }
