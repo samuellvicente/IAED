@@ -1,7 +1,6 @@
 #include <stdio.h>
+#include "header.h"
 
 void execute_X(){
-    
-    puts("pressed X");
-
+    printf("%hu\n", total_msg);
 }
