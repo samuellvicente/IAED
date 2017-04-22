@@ -12,10 +12,10 @@ int forum() {
                     break;        // caso execute sai do loop para procurar o proximo comando
                 case 'L':
                     getchar();    // elimina '\n'
-                    execute_L();  // executa a funcao responsavel por processar o comando 'L'                  
+                    execute_L();  // executa a funcao responsavel por processar o comando 'L'
                     break;        // caso execute sai do loop para procurar o proximo comando
                 case 'U':
-                    execute_U();  // executa a funcao responsavel por processar o comando 'U'    
+                    execute_U();  // executa a funcao responsavel por processar o comando 'U'
                     break;        // caso execute sai do loop para procurar o proximo comando
                 case 'O':
                     execute_O();  // executa a funcao responsavel por processar o comando 'O' 
