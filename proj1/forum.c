@@ -16,6 +16,7 @@ int forum() {
                     break;        // caso execute sai do loop para procurar o proximo comando
                 case 'U':
                     execute_U();  // executa a funcao responsavel por processar o comando 'U'
+                    getchar();
                     break;        // caso execute sai do loop para procurar o proximo comando
                 case 'O':
                     execute_O();  // executa a funcao responsavel por processar o comando 'O' 
