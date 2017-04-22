@@ -7,7 +7,7 @@
 // ESTRUTURAS
 
 typedef struct msg {
-    unsigned short sender_id; // < 1000 && >= 0
+    unsigned short user_id; // < 1000 && >= 0
     char message[MAX_FRASE + 1];
 } Msg;
 
@@ -18,6 +18,7 @@ unsigned short user_list[MAX_USR];
 Msg message_list[MAX_MSG];
 unsigned short longest_msg; // guarda o tamanho da maior msg
 unsigned short index_msg; // posicao no vetor da ultima msg
+unsigned short total_msg; // numero total de mensagens
 
 // PROTOTIPOS #####CHECKAR SE SAO REALMENTE TODAS VOID OU NAO##### 
 

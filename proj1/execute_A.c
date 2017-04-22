@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include "header.h"
 
 void execute_A() {
     unsigned short a;
     char c;
 
-    scanf("%hu", &message_list[index_msg].sender_id); // guarda sender_id
+    scanf("%hu", &message_list[index_msg].user_id); // guarda user_id
     getchar();
 
     for(a = 0; (c = getchar()) != '\n'; message_list[index_msg].message[a++] = c); // guarda msg
@@ -13,5 +14,5 @@ void execute_A() {
     if(a > longest_msg) // atualiza longest_msg
         longest_msg = a;
 
-    ++user_list[message_list[index_msg++].sender_id];
+    ++user_list[message_list[index_msg++].user_id];
 }
