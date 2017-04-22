@@ -15,4 +15,5 @@ void execute_A() {
         longest_msg = a;
 
     ++user_list[message_list[index_msg++].user_id];
+    ++total_msg;
 }
