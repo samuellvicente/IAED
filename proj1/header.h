@@ -24,10 +24,10 @@ unsigned short total_msg; // numero total de mensagens
 
 
 int forum();
-    void execute_A(); 
-    void execute_L();
-    void execute_U();
-    void execute_O();
+void execute_A(); 
+void execute_L();
+void execute_U();
+void execute_O();
     void execute_T();
     void execute_S();
     void execute_C();
