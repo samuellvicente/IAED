@@ -6,8 +6,7 @@ void execute_T(){
 
     for(user = 1; user < MAX_USR; max_entry < user_list[user] ? max_entry = user_list[user++] : user++);   // encontra o maior numero de submissoes
     
-    for (user = 0; user < MAX_USR; user++)
-        if (user_list[user] == max_entry)
-            printf("*MOST ACTIVE USER:%hu:%hu\n",user, user_list[user]);
+    for (user = 0; user < MAX_USR; user_list[user] == max_entry ? printf("*MOST ACTIVE USER:%hu:%hu\n",user, user_list[user]), user++ : user ++);
+
 }
 
