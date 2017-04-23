@@ -7,7 +7,7 @@ void execute_C(){
     unsigned int cnt = 0, a, i, j;
     char s[MAX_FRASE + 1];
 
-    scanf("%s\n", &s);
+    scanf("%s\n", s);
     
     for(a = 0; message_list[a].message[0] != '\0' && a < MAX_MSG; a++)
         for(i = 0; message_list[a].message[i] != '\0'; i++)
@@ -16,5 +16,5 @@ void execute_C(){
                 if(s[j] == '\0' && wchar(message_list[a].message[i+j]))
                     cnt++;
             }
-    printf("%hd\n", cnt);
+    printf("%u\n", cnt);
 }
