@@ -26,6 +26,7 @@ int forum() {
                     execute_T();  // executa a funcao responsavel por processar o comando 'T' 
                     break;        // caso execute sai do loop para procurar o proximo comando
                 case 'S':
+                    getchar();    // elimina \n
                     execute_S();  // executa a funcao responsavel por processar o comando 'S'
                     break;        // caso execute sai do loop para procurar o proximo comando
                 case 'C':
