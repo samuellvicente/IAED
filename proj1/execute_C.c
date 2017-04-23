@@ -12,9 +12,9 @@ void execute_C(){
     for(a = 0; message_list[a].message[0] != '\0' && a < MAX_MSG; a++)
         for(i = 0; message_list[a].message[i] != '\0'; i++)
             if(wchar(message_list[a].message[i]) || i == 0) {
-                for(j = 0; message_list[a].message[i+j] == s[j]; j++);
-                if(s[j] == '\0' && wchar(message_list[a].message[i]))
+                for(j = 0; message_list[a].message[i+j] == s[j] && s[j] != '\0'; j++);
+                if(s[j] == '\0' && wchar(message_list[a].message[i+j]))
                     cnt++;
             }
-    printf("%d", cnt);
+    printf("%hd\n", cnt);
 }
