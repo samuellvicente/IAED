@@ -17,5 +17,6 @@ void execute_C(){
                 if(s[j] == '\0' && wchar(message_list[a].message[i+j]))
                     cnt++;
             }
-    printf("%u\n", cnt);
+    printf("*WORD %s:%u\n", s, cnt);
 }
+
