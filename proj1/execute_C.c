@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include "header.h"
 
-#define wchar(A) (( A < 'a' || A > 'z' ) && ( A < 'A' || A > 'Z' ))
-
 void execute_C(){
     unsigned int cnt = 0, a, i, j;
     char s[MAX_FRASE + 1];
