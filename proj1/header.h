@@ -5,7 +5,6 @@
 #define MAX_USR 1000
 #define MAX_MSG 10000
 
-//#define less(A, B) (A < B)
 #define exch(A, B) { int temp = A; A = B; B = temp; }
 #define wchar(A) (( A < 'a' || A > 'z' ) && ( A < 'A' || A > 'Z' ))
 
@@ -16,7 +15,6 @@ typedef struct msg {
     char message[MAX_FRASE + 1];
 } Msg;
 
-
 // VARIAVEIS GLOBAIS
 
 unsigned short user_list[MAX_USR];
@@ -25,8 +23,8 @@ unsigned short longest_msg; // guarda o tamanho da maior msg
 unsigned short index_msg; // posicao no vetor da ultima msg
 unsigned short total_msg; // numero total de mensagens
 int index_copy[MAX_MSG];  //rever !!!!
-// PROTOTIPOS
 
+// PROTOTIPOS
 
 int forum();
 void execute_A(); 
