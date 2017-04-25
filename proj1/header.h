@@ -38,6 +38,6 @@ void execute_T();
         void quicksort(int a[], int l, int r);
 void execute_C();
 void execute_X();
-
+unsigned short msg_less(Msg a, Msg b);
 
 #endif

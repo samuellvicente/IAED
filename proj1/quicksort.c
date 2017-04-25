@@ -4,13 +4,12 @@
 extern Msg message_list[MAX_MSG];
 
 int partition(int a[], int l, int r) {
-    int c;
     int i = l-1;
     int j = r;
     //char v[MAX_FRASE + 1] = message_list[a[r]].message;
     while (i < j) { 
-        while ((c = strcmp(message_list[a[++i]].message, message_list[a[r]].message)) < 0);
-        while ((c = strcmp(message_list[a[r]].message, message_list[a[--j]].message)) < 0)
+        while (msg_less(message_list[a[++i]], message_list[a[r]]));
+        while (msg_less(message_list[a[r]], message_list[a[--j]]))
             if (j == l)
                 break;
         if (i < j)
@@ -31,4 +30,11 @@ void quicksort(int a[], int l, int r) {
     quicksort(a, i+1, r);
 }
 
-
+unsigned short msg_less(Msg a, Msg b) {
+	if (strcmp(a.message, b.message) < 0)
+		return 1;
+	else if (strcmp(a.message, b.message) == 0)
+		return a.user_id < b.user_id ? 1 : 0;
+	else
+		return 0;
+}
