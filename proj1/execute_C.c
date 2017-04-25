@@ -6,7 +6,7 @@ void execute_C(){
     char s[MAX_FRASE + 1];
 
     scanf("%s", s);
-    getchar();   // PERGUNTAR AO PROF PK QUE O SCANF("%s\n") nao faz o mesmo nas strings e nos ints
+    getchar(); 
 
     for(a = 0; message_list[a].message[0] != '\0' && a < MAX_MSG; a++)
         for(i = 0; message_list[a].message[i] != '\0'; i++)

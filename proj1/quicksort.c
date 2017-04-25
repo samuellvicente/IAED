@@ -6,7 +6,7 @@ extern Msg message_list[MAX_MSG];
 int partition(int a[], int l, int r) {
     int i = l-1;
     int j = r;
-    //char v[MAX_FRASE + 1] = message_list[a[r]].message;
+    //char v[MAX_FRASE + 1] = message_list[a[r]].message;  ELIMINAR O CODIGO REPETIDO
     while (i < j) { 
         while (msg_less(message_list[a[++i]], message_list[a[r]]));
         while (msg_less(message_list[a[r]], message_list[a[--j]]))

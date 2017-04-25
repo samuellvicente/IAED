@@ -25,7 +25,7 @@ unsigned short longest_msg; // guarda o tamanho da maior msg
 unsigned short index_msg; // posicao no vetor da ultima msg
 unsigned short total_msg; // numero total de mensagens
 int index_copy[MAX_MSG];  //rever !!!!
-// PROTOTIPOS #####CHECKAR SE SAO REALMENTE TODAS VOID OU NAO##### 
+// PROTOTIPOS
 
 
 int forum();
@@ -34,8 +34,8 @@ void execute_L();
 void execute_U();
 void execute_O();
 void execute_T();
-    void execute_S();
-        void quicksort(int a[], int l, int r);
+void execute_S();
+void quicksort(int a[], int l, int r);
 void execute_C();
 void execute_X();
 unsigned short msg_less(Msg a, Msg b);
