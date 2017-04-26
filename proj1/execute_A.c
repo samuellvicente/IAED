@@ -5,7 +5,8 @@ void execute_A() {
     unsigned short a;
     char c;
 
-    scanf("%hu ", &message_list[index_msg].user_id); // guarda user_id PERGUNTAR AO PROF 
+    scanf("%hu", &message_list[index_msg].user_id); // guarda user_id PERGUNTAR AO PROF 
+    getchar();
 
     for(a = 0; (c = getchar()) != '\n'; message_list[index_msg].message[a++] = c); // guarda msg
     message_list[index_msg].message[a] = '\0';
