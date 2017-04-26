@@ -4,7 +4,7 @@
 
 void execute_S() {
     unsigned int a;
-
+// podemos ter o index_copy declarado aqui
     for(a = 0; a < total_msg; index_copy[a] = a, a++); // cria copia de index do vector das mensagens
 
     quicksort(index_copy, 0, total_msg - 1);
