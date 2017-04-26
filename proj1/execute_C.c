@@ -16,7 +16,7 @@ void execute_C() {
             if(wchar(message_list[a].message[i]) || i == 0) {
 		for( ; wchar(message_list[a].message[i]); i++);
                 //while(wchar(message_list[a].message[i])) i++;
-		if(wchar(message_list[a].message[i+a])) {
+		if(wchar(message_list[a].message[i+slen])) {
                 	for(j = 0; message_list[a].message[i+j] == s[j] && s[j] != '\0'; j++);
                 	if(s[j] == '\0' && wchar(message_list[a].message[i+j]))
                     		cnt++;
