@@ -6,7 +6,7 @@
 #define MAX_MSG 10000
 
 #define exch(A, B) { int temp = A; A = B; B = temp; }
-#define wchar(A) (( A < 'a' || A > 'z' ) && ( A < 'A' || A > 'Z' ))
+#define wchar(A) (( A < 'a' || A > 'z' ) && ( A < 'A' || A > 'Z' ) && ( A < '0' || A > '9'))
 
 // ESTRUTURAS
 
