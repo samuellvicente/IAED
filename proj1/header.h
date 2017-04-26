@@ -6,7 +6,7 @@
 #define MAX_MSG 10000
 
 #define exch(A, B) { int temp = A; A = B; B = temp; }
-#define wchar(A) (( A < 'a' || A > 'z' ) && ( A < 'A' || A > 'Z' ) && ( A < '0' || A > '9'))
+#define wchar(A) ( A == ';' || A == ',' || A == ' ' || A == '\t' || A == '.' || A == '\0' )//(( A < 'a' || A > 'z' ) && ( A < 'A' || A > 'Z' ) && ( A < '0' || A > '9'))
 
 // ESTRUTURAS
 
@@ -20,8 +20,8 @@ typedef struct msg {
 unsigned short user_list[MAX_USR];
 Msg message_list[MAX_MSG];
 unsigned short longest_msg; // guarda o tamanho da maior msg
-unsigned short index_msg; // posicao no vetor da ultima msg
-unsigned short total_msg; // numero total de mensagens
+unsigned int index_msg; // posicao no vetor da ultima msg
+unsigned int total_msg; // numero total de mensagens
 int index_copy[MAX_MSG];  //rever !!!!
 
 // PROTOTIPOS
