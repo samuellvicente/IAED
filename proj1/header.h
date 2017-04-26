@@ -20,9 +20,8 @@ typedef struct msg {
 unsigned short user_list[MAX_USR];
 Msg message_list[MAX_MSG];
 unsigned short longest_msg; // guarda o tamanho da maior msg
-unsigned int index_msg; // posicao no vetor da ultima msg
+unsigned int index_msg; // posicao no vetor da ultima msg pode ser static na funcao ????
 unsigned int total_msg; // numero total de mensagens
-int index_copy[MAX_MSG];  //rever !!!!
 
 // PROTOTIPOS
 
