@@ -4,38 +4,38 @@
 
 int forum() {
     char command;
-    while (1) {
-            command = getchar(); // le o comando
+    while(1) {
+            command = getchar(); 
             getchar();
-            switch (command) {
+            switch(command) {
                 case 'A':
-                    execute_A();  // executa a funcao responsavel por processar o comando 'A'
-                    break;        // caso execute sai do loop para procurar o proximo comando
+                    execute_A();
+                    break;
                 case 'L':
-                    execute_L();  // executa a funcao responsavel por processar o comando 'L'
-                    break;        // caso execute sai do loop para procurar o proximo comando
+                    execute_L();
+                    break;
                 case 'U':
-                    execute_U();  // executa a funcao responsavel por processar o comando 'U'
-                    break;        // caso execute sai do loop para procurar o proximo comando
+                    execute_U();
+                    break;
                 case 'O':
-                    execute_O();  // executa a funcao responsavel por processar o comando 'O' 
-                    break;        // caso execute sai do loop para procurar o proximo comando
+                    execute_O();
+                    break;
                 case 'T':
-                    execute_T();  // executa a funcao responsavel por processar o comando 'T' 
-                    break;        // caso execute sai do loop para procurar o proximo comando
+                    execute_T();
+                    break;
                 case 'S':
-                    execute_S();  // executa a funcao responsavel por processar o comando 'S'
-                    break;        // caso execute sai do loop para procurar o proximo comando
+                    execute_S();
+                    break;
                 case 'C':
-                    execute_C();  // executa a funcao responsavel por processar o comando 'C'
-                    break;        // caso execute sai do loop para procurar o proximo comando
+                    execute_C();
+                    break;
                 case 'X':
-                    execute_X();  // executa a funcao responsavel por processar o comando 'X' 
-                    return EXIT_SUCCESS;  //sai do programa com sucesso
+                    execute_X(); 
+                    return EXIT_SUCCESS;
                 default:
                     puts("ERRO: Comando desconhecido"); // caso o comando nao seja reconhecido imprime na consola uma mensagem de erro
             }
     }
-    return EXIT_FAILURE; // sai do programa com algo que correu mal
+    return EXIT_FAILURE;
 }
 
