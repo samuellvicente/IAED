@@ -2,18 +2,21 @@
 #include "header.h"
 
 void execute_A() {
-    unsigned short a;
+    unsigned short len_msg;
     char c;
-
-    scanf("%hu", &message_list[index_msg].user_id); // guarda user_id PERGUNTAR AO PROF 
+    static unsigned int index_msg;
+    
+    scanf("%hu", &message_list[index_msg].user_id);
     getchar();
+    
+    for(len_msg = 0; (c = getchar()) != '\n'; message_list[index_msg].message[len_msg++] = c);
+    message_list[index_msg].message[len_msg] = '\0';
 
-    for(a = 0; (c = getchar()) != '\n'; message_list[index_msg].message[a++] = c); // guarda msg
-    message_list[index_msg].message[a] = '\0';
+    if(len_msg > longest_msg) 
+        longest_msg = len_msg;
 
-    if(a > longest_msg) // atualiza longest_msg
-        longest_msg = a;
-
+    // incrementa o contador de submissoes do user
     ++user_list[message_list[index_msg++].user_id];
+
     ++total_msg;
 }
