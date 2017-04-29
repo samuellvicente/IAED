@@ -2,24 +2,26 @@
 #include "header.h"
 
 void execute_C() {
-    unsigned int cnt = 0, a, i, j, slen;
-    char s[MAX_FRASE + 1];
-
-    //scanf("%s", s);
-    //getchar();
+    unsigned int cnt = 0, a, i, j, wordlen;
+    char word[MAX_FRASE + 1];
     
-    for(slen = 0; (s[slen] = getchar()) != '\n'; slen++); // guarda msg
-    s[slen] = '\0';
+    //guarda padrao a procurar
+    for(wordlen = 0; (word[wordlen] = getchar()) != '\n'; wordlen++);
+    word[wordlen] = '\0';
 	
 	for(a = 0; a < total_msg; a++)
 		for(i = 0; message_list[a].message[i] != '\0'; i++)
 			if(wchar(message_list[a].message[i]) || i == 0) {
-				for( ; wchar(message_list[a].message[i]) && message_list[a].message[i] != '\0'; i++); // avanca ate encontrar um char nao branco
-				if(wchar(message_list[a].message[i+slen])) {
-					for(j = 0; message_list[a].message[i+j] == s[j] && s[j] != '\0'; j++);
-					if(s[j] == '\0' && wchar(message_list[a].message[i+j]))
+                // avanca na mensagem ate encontrar um caracter nao branco
+				for( ; wchar(message_list[a].message[i]) && message_list[a].message[i] != '\0'; i++);
+                // verifica se o tamanho da palavra encontrada e igual ao do padrao
+				if(wchar(message_list[a].message[i+wordlen])) {
+                    // verifica se cada letra ate ao final da palavra e igual ao padrao
+					for(j = 0; message_list[a].message[i+j] == word[j] && j != wordlen; j++);
+                    // chegar ao fim do padrao significa que todas as letras sao iguais
+                    if(j == wordlen)
 						cnt++;
 				}
 			}
-	printf("*WORD %s:%u\n", s, cnt);
+	printf("*WORD %s:%u\n", word, cnt);
 }
