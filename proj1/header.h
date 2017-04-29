@@ -14,6 +14,7 @@
 typedef struct msg {
     unsigned short user_id; // < 1000 && >= 0
     char message[MAX_FRASE + 1];
+    unsigned short lenght_msg;
 } Msg;
 
 // VARIAVEIS GLOBAIS
