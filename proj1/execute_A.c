@@ -15,6 +15,8 @@ void execute_A() {
     if(len_msg > longest_msg) 
         longest_msg = len_msg;
 
+    message_list[index_msg].lenght_msg = len_msg;
+
     // incrementa o contador de submissoes do user
     ++user_list[message_list[index_msg++].user_id];
 
