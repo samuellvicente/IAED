@@ -31,10 +31,8 @@ void quicksort(int a[], int l, int r) {
 
 unsigned short msg_less(Msg a, Msg b) {
     short r = strcmp(a.message, b.message);
-	if (r < 0)
+	if (r < 0 || (r == 0 && a.user_id < b.user_id))
 		return 1;
-	else if (r == 0)
-		return a.user_id < b.user_id ? 1 : 0;
 	else
 		return 0;
 }
