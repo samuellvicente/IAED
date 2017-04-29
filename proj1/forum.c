@@ -33,7 +33,7 @@ int forum() {
                     execute_X(); 
                     return EXIT_SUCCESS;
                 default:
-                    puts("ERRO: Comando desconhecido"); // caso o comando nao seja reconhecido imprime na consola uma mensagem de erro
+                    puts("ERRO: Comando desconhecido");
             }
     }
     return EXIT_FAILURE;

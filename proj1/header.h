@@ -7,12 +7,10 @@
 #define MAX_MSG 10000
 
 
+// MACROS
+
 #define exch(A, B) { int temp = A; A = B; B = temp; }
 #define wchar(A) ( A == ';' || A == ',' || A == ' ' || A == '\t' || A == '.' || A == '\0' )
-//#define wchar(A) (( A < 'a' || A > 'z' ) && ( A < 'A' || A > 'Z' ) && ( A < '0' || A > '9'))  <- decidir
-
-// acho que fazer uma funcao e melhor pois assim n temos que usar o strcmp 2 vezes  <- decidir nao funciona also
-//#define msg_less(A, B) ( strcmp(message_list[A].message,message_list[B].message) < 0 || ( strcmp(message_list[A].message,message_list[B].message) == 0 && message_list[A].user_id < message_list[B].user_id ) )
 
 
 // ESTRUTURAS
