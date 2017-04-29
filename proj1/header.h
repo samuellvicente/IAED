@@ -7,7 +7,7 @@
 
 #define exch(A, B) { int temp = A; A = B; B = temp; }
 #define wchar(A) ( A == ';' || A == ',' || A == ' ' || A == '\t' || A == '.' || A == '\0' )//(( A < 'a' || A > 'z' ) && ( A < 'A' || A > 'Z' ) && ( A < '0' || A > '9'))
-#define msg_less(A, B) ( strcmp(A.message, B.message) < 0 || ( strcmp(A.message, B.message) == 0 && A.user_id < B.user_id) );
+// #define msg_less(A, B) ( strcmp(A.message, B.message) < 0 || ( strcmp(A.message, B.message) == 0 && A.user_id < B.user_id) );
 
 // ESTRUTURAS
 
