@@ -33,5 +33,5 @@ void quicksort(int a[], int l, int r) {
 
 unsigned short msg_less(int a, int b) {
     short r = strcmp(message_list[a].message,message_list[b].message);
-	return ( r < 0 || ( r == 0 && message_list[a].user_id < message_list[b].user_id ));
+    return ( r < 0 || ( r == 0 && message_list[a].user_id < message_list[b].user_id ));
 }
