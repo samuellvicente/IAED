@@ -5,12 +5,10 @@
 #define MAX_USR 1000
 #define MAX_MSG 10000
 
-
 // MACROS
 
 #define exch(A, B) { int temp = A; A = B; B = temp; }
 #define wchar(A) ( A == ';' || A == ',' || A == ' ' || A == '\t' || A == '.' || A == '\0' )
-
 
 // ESTRUTURAS
 
