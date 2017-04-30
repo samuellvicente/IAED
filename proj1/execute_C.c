@@ -24,6 +24,6 @@ void execute_C() {
                         if(j == patternlen)
                             cnt++;
             	}
-	    	}
+	    }
 	printf("*WORD %s:%u\n", pattern, cnt);
 }
