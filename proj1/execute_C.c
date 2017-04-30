@@ -25,5 +25,5 @@ void execute_C() {
                         cnt++;
                 }
             }
-	printf("*WORD %s:%u\n", pattern, cnt);
+    printf("*WORD %s:%u\n", pattern, cnt);
 }
