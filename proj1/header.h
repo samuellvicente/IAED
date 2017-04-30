@@ -1,6 +1,5 @@
 #ifndef HEADER
 
-
 #define HEADER
 #define MAX_FRASE 140
 #define MAX_USR 1000
@@ -21,14 +20,12 @@ typedef struct msg {
     unsigned short lenght_msg;
 } Msg;
 
-
 // VARIAVEIS GLOBAIS
 
 unsigned short user_list[MAX_USR];
 Msg message_list[MAX_MSG];
 unsigned short longest_msg; 
 unsigned int total_msg;
-
 
 // PROTOTIPOS
 
