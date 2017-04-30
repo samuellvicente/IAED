@@ -20,9 +20,9 @@ void execute_C() {
                 if(wchar(message_list[a].message[i+patternlen])) {
                     // verifica se cada letra ate ao final da palavra e igual ao padrao
                     for(j = 0; message_list[a].message[i+j] == pattern[j] && j != patternlen; j++);
-                        // chegar ao final do padrao implica a palavra ser igual
-                        if(j == patternlen)
-                            cnt++;
+                    // chegar ao final do padrao implica a palavra ser igual
+                    if(j == patternlen)
+                        cnt++;
             	}
 	    }
 	printf("*WORD %s:%u\n", pattern, cnt);
