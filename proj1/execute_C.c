@@ -11,6 +11,7 @@ void execute_C() {
 
     // precorre vector das mensagens
     for(a = 0; a < total_msg; a++)
+
 		// precorre a mensagem
 		for(i = 0; message_list[a].message[i] != '\0'; i++)
 			if(wchar(message_list[a].message[i]) || i == 0) {
