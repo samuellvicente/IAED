@@ -2,5 +2,5 @@
 #include "header.h"
 
 void execute_X(){
-    printf("%hu\n", total_msg);
+    printf("%u\n", total_msg);
 }

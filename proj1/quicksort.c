@@ -5,13 +5,14 @@
 int partition(int a[], int l, int r) {
     int i = l-1;
     int j = r;
+    int v = a[r];
 
-    while (i < j) { 
-        while (msg_less(message_list[a[++i]], message_list[a[r]]));
-        while (msg_less(message_list[a[r]], message_list[a[--j]]))
-            if (j == l)
+    while(i < j) {
+        while(msg_less(a[++i], v));
+        while(msg_less(v, a[--j]))
+            if(j == l)
                 break;
-        if (i < j)
+        if(i < j)
             exch(a[i], a[j]);
     }
     exch(a[i], a[r]);
@@ -21,7 +22,7 @@ int partition(int a[], int l, int r) {
 void quicksort(int a[], int l, int r) {
     int i;
     
-    if (r <= l)
+    if(r <= l)
         return;
     
     i = partition(a, l, r);
@@ -29,11 +30,8 @@ void quicksort(int a[], int l, int r) {
     quicksort(a, i+1, r);
 }
 
-unsigned short msg_less(Msg a, Msg b) {
-	if (strcmp(a.message, b.message) < 0)
-		return 1;
-	else if (strcmp(a.message, b.message) == 0)
-		return a.user_id < b.user_id ? 1 : 0;
-	else
-		return 0;
+
+unsigned short msg_less(int a, int b) {
+    short r = strcmp(message_list[a].message,message_list[b].message);
+    return ( r < 0 || ( r == 0 && message_list[a].user_id < message_list[b].user_id ));
 }
