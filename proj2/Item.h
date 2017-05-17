@@ -18,5 +18,4 @@ typedef struct product {
 Item newItem(unsigned int key, unsigned int stock);
 void freeItem(Item item);
 void addItemStock(Item item, int value);
-
 #endif 
