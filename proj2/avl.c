@@ -9,7 +9,7 @@ int height(link h) {
 
 int balance(link h) {
     if(h == NULL) return 0;
-    return height(h->left)-height(h->right);
+    return height(h->left) - height(h->right);
 }
 
 void update_height(link h) {
@@ -57,6 +57,11 @@ link newNode(Item item, link left, link right) {
 	return new;
 }
 
+link max(link h) {
+	if (h == NULL || h->right == NULL)	return h;
+	else								return max(h->right);
+} 
+
 link AVLbalance(link h) {
 	if (h == NULL) return h;
 	int balanceFactor = balance(h);
@@ -67,24 +72,46 @@ link AVLbalance(link h) {
 		if (balance(h->right) <= 0)	h = rotL(h);
 		else                 		h = rotRL(h);
 	} else {
-		int height_left = height(h->left), height_right = height(h->right);
-		h->height = height_left > height_right ?  height_left + 1 : height_right + 1;
+		update_height(h);
 	}
 	return h; 
 }
 
 link search(link h, Item v) {
 	if (h == NULL)			return NULL;
-	if (equal(v, h->item))	return h;
-	if (less(v, h->item))	return search(h->left, v);
-	else					return search(h->right, v);
+	if (equal(key(v), key(h->item)))	return h;
+	if (less(key(v), key(h->item)))		return search(h->left, v);
+	else								return search(h->right, v);
 } 
 
 link insertR(link h, Item item) {
-	if (h == NULL)				return newNode(item, NULL, NULL);
-	if (less(item, h->item))	h->left = insertR(h->left, item);
-	else 						h->right = insertR(h->right, item);
+	if (h == NULL)						return newNode(item, NULL, NULL);
+	if (less(key(item), key(h->item)))	h->left = insertR(h->left, item);
+	else 								h->right = insertR(h->right, item);
 
 	h=AVLbalance(h);
 	return h; 
+}
+
+link AVLdelete(link h, Key k) {
+	if (h==NULL) return h;
+	else if (less(k, key(h->item))) h->left = AVLdelete(h->left, k);
+	else if (less(key(h->item), k)) h->right = AVLdelete(h->right, k);
+	else{
+		if (h->left != NULL && h->right != NULL) {
+			link aux=max(h->left);
+			exchangeItem(h, aux);
+			h->left = AVLdelete(h->left, key(aux->item));
+		}
+		else {
+			link aux = h;
+			if (h->left == NULL && h->right == NULL)	h = NULL;
+			else if (h->left == NULL)					h = h->right;
+			else 										h = h->left;
+			freeItem(aux->item);
+			free(aux);
+		}
+	}
+	h = AVLbalance(h);
+	return h;
 }

@@ -7,6 +7,7 @@
 // Macros
 
 #define updateHeight(A) (A->left > A->right ? A->left++ : A->right++)
+#define exchangeItem(A, B) {Item x = A->item; A->item = B->item; B->item = x;}
 
 // Estrutura
 
@@ -35,7 +36,7 @@ link newNode(Item item, link left, link right);
 
 Item AVLsearch(link,Item);
 void AVLinsert(link*,Item);
-void AVLdelete(link*,Item);
+link AVLdelete(link,Key);
 void AVLsort(link,void (*visit)(Item));
 void AVLfree(link*);
 
