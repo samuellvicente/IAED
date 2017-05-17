@@ -1,2 +1,0 @@
-#!/bin/bash
-gcc -o forum -Wall execute_A.c execute_C.c execute_L.c execute_O.c execute_S.c execute_T.c execute_U.c execute_X.c forum.c main.c quicksort.c
