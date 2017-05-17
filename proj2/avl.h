@@ -4,6 +4,10 @@
 #include <stdlib.h>
 #include "Item.h"
 
+// Macros
+
+#define updateHeight(A) (A->left > A->right ? A->left++ : A->right++)
+
 // Estrutura
 
 typedef struct node* link;
