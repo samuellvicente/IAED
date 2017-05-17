@@ -2,7 +2,7 @@
 #include <stdlib.h>
  
 Item newItem(unsigned int key, unsigned int stock) {
-	Item new = (Item)malloc(sizeof(Item));
+	Item new = (Item)malloc(sizeof(struct product));
 	new->key = key;
 	new->stock = stock;
 	return new;
