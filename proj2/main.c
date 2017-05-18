@@ -4,15 +4,14 @@
 #include "Item.h"
 #include "avl.h"
 
+link root;
+
+Key total_keys = 0;
+Key* p_total_keys = &total_keys;
+
 int main() {
 	char c;
-	
-	link root;
 	avlInit(&root);
-
-	Key total_keys = 0;
-	Key* p_total_keys = &total_keys;
-
 	while (1) {
 		c = getchar();
 		getchar();
