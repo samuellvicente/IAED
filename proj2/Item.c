@@ -14,9 +14,9 @@ void freeItem(Item item) {
 	free(item);
 }
 
-void addItemStock(Item item, int value) {
+void addItemStock(Item item, Stock value) {
 	long v = item->stock + value;
-	if (v<0)	item->stock = 0;
+	if (v < 0)	item->stock = 0;
 	else		item->stock = v;
 }
 

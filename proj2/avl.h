@@ -32,14 +32,13 @@ void updateHeight(link h);
 link newNode(Item item, link left, link right);
 void avlInit(link* root);
 void avlInsert(link* root, Item item);
-void avlSearch(link root, Key v);
+Item avlSearch(link root, Key v);
 void avlDelete(link* root, Key k); 
 void avlFree(link* root);
 
-Item searchR(link,Item);
+Item searchR(link h, Key v);
 link insertR(link h, Item item);
 link deleteR(link h,Key k);
-void sort(link,void (*visit)(Item));
 link freeR(link h);
 
 #endif 

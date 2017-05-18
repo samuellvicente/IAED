@@ -10,11 +10,11 @@
 
 // PROTOTIPOS
 
-void execute_a(); 
-void execute_l();
-void execute_m();
-void execute_r();
-void execute_x();
+void executeA(); 
+void executeL();
+void executeM();
+void executeR();
+void executeX();
 
 #endif
 

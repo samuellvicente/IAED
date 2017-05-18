@@ -24,7 +24,7 @@ struct product {
 
 Item newItem(Key key, Stock stock);
 void freeItem(Item item);
-void addItemStock(Item item, int value);
+void addItemStock(Item item, Stock value);
 void printItem(Item);
 
 Key scanKey();
