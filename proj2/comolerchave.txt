@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <stdint.h>
+#include <inttypes.h>
 
+typedef uint32_t Key;
 
 int main(){
-	unsigned a;
-	scanf("%x", &a);
-	printf("%x %u", a, a);
-    long c = sizeof(int);
-    printf("%\n",c);
+	Key a;
+	scanf("%" PRIx32, &a);
+	printf("%" PRIx32 " %" PRIu32 "\n", a, a);
 	return 0;
 }
