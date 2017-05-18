@@ -1,6 +1,9 @@
 #ifndef __ITEM__
 #define __ITEM__
 
+#include <stdint.h>
+
+
 // Macros
 
 #define key(A) (A->key)
@@ -9,7 +12,7 @@
 
 // Estrutura
 
-typedef unsigned int Key;
+typedef UINT32_MAX Key;
 
 typedef struct product {
 	unsigned int key, stock;

@@ -1,8 +1,11 @@
 #include <stdio.h>
 
-int main() {
+
+int main(){
 	unsigned a;
 	scanf("%x", &a);
 	printf("%x %u", a, a);
+    long c = sizeof(int);
+    printf("%\n",c);
 	return 0;
 }
