@@ -3,7 +3,6 @@
 
 #include <stdint.h>
 
-
 // Macros
 
 #define key(A) (A->key)
@@ -12,15 +11,24 @@
 
 // Estrutura
 
-typedef UINT32_MAX Key;
+typedef uint32_t Key;
+typedef unsigned int Stock;
+typedef struct product* Item;
 
-typedef struct product {
-	unsigned int key, stock;
-} *Item;
+struct product {
+	Key key;
+	Stock stock;
+};
 
 // Prototipos
 
-Item newItem(unsigned int key, unsigned int stock);
+Item newItem(Key key, Stock stock);
 void freeItem(Item item);
 void addItemStock(Item item, int value);
+void printItem(Item);
+
+Key scanKey();
+Stock scanStock();
+
 #endif 
+

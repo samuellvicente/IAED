@@ -1,18 +1,18 @@
+#include <stdlib.h>
 #include "avl.h"
 #include "Item.h"
-#include <stdlib.h>
 
 int height(link h) {
 	if (h == NULL) return 0;
 	return h->height;
 }
 
-int balance(link h) {
+int balanceFactor(link h) {
     if(h == NULL) return 0;
     return height(h->left) - height(h->right);
 }
 
-void update_height(link h) {
+void updateHeight(link h) {
 	int height_left = height(h->left);
 	int height_right = height(h->right);
 	h->height = height_left > height_right ?  height_left + 1 : height_right + 1;
@@ -22,8 +22,8 @@ link rotL(link h) {
 	link x = h->right;
 	h->right = x->left;
 	x->left = h;
-	update_height(h);
-	update_height(x);
+	updateHeight(h);
+	updateHeight(x);
 	return x;
 }
 
@@ -31,8 +31,8 @@ link rotR(link h) {
 	link x = h->left;
 	h->left = x->right;
 	x->right = h;
-	update_height(h);
-	update_height(x);
+	updateHeight(h);
+	updateHeight(x);
 	return x;
 }
 
@@ -57,51 +57,63 @@ link newNode(Item item, link left, link right) {
 	return new;
 }
 
+void avlInit(link* root) {
+	*root = NULL;
+}
+
 link max(link h) {
 	if (h == NULL || h->right == NULL)	return h;
 	else								return max(h->right);
 } 
 
-link AVLbalance(link h) {
+link balance(link h) {
 	if (h == NULL) return h;
-	int balanceFactor = balance(h);
-	if(balanceFactor > 1) {
-		if (balance(h->left) >= 0)	h = rotR(h);
-		else                 		h = rotLR(h);
-	} else if(balanceFactor < -1) {
-		if (balance(h->right) <= 0)	h = rotL(h);
-		else                 		h = rotRL(h);
+	int balance_factor = balanceFactor(h);
+	if(balance_factor > 1) {
+		if (balanceFactor(h->left) >= 0)	h = rotR(h);
+		else								h = rotLR(h);
+	} else if(balance_factor < -1) {
+		if (balanceFactor(h->right) <= 0)	h = rotL(h);
+		else								h = rotRL(h);
 	} else {
-		update_height(h);
+		updateHeight(h);
 	}
 	return h; 
 }
 
-link search(link h, Item v) {
-	if (h == NULL)			return NULL;
-	if (equal(key(v), key(h->item)))	return h;
-	if (less(key(v), key(h->item)))		return search(h->left, v);
-	else								return search(h->right, v);
+Item searchR(link h, Key v) {
+	if (h == NULL)				return NULL;
+	if (equal(v, key(h->item)))	return h->item;
+	if (less(v, key(h->item)))	return searchR(h->left, v);
+	else						return searchR(h->right, v);
 } 
+
+Item avlSearch(link root, Key v) {
+	return searchR(root, v);
+}
 
 link insertR(link h, Item item) {
 	if (h == NULL)						return newNode(item, NULL, NULL);
 	if (less(key(item), key(h->item)))	h->left = insertR(h->left, item);
 	else 								h->right = insertR(h->right, item);
 
-	h=AVLbalance(h);
+	h=balance(h);
 	return h; 
 }
 
-link AVLdelete(link h, Key k) {
+void avlInsert(link* root, Item item) {
+	*root = insertR(*root, item);
+}
+
+link deleteR(link h, Key k) {
 	if (h==NULL) return h;
-	else if (less(k, key(h->item))) h->left = AVLdelete(h->left, k);
-	else if (less(key(h->item), k)) h->right = AVLdelete(h->right, k);
+	else if (less(k, key(h->item)))		h->left = deleteR(h->left, k);
+	else if (less(key(h->item), k))		h->right = deleteR(h->right, k);
 	else{
 		if (h->left != NULL && h->right != NULL) {
 			link aux=max(h->left);
 			exchangeItem(h, aux);
-			h->left = AVLdelete(h->left, key(aux->item));
+			h->left = deleteR(h->left, key(aux->item));
 		}
 		else {
 			link aux = h;
@@ -112,6 +124,21 @@ link AVLdelete(link h, Key k) {
 			free(aux);
 		}
 	}
-	h = AVLbalance(h);
+	h = balance(h);
 	return h;
+}
+
+void avlDelete(link* root, Key k) {
+	*root = deleteR(*root, k);
+}
+
+link freeR(link h) {
+    if (h==NULL)		return h;
+    h->left = freeR(h->left);
+    h->right = freeR(h->right);
+    return deleteR(h,key(h->item));
+}
+
+void avlFree(link* root) {
+	*root = freeR(*root);
 }

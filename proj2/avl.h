@@ -6,7 +6,6 @@
 
 // Macros
 
-#define updateHeight(A) (A->left > A->right ? A->left++ : A->right++)
 #define exchangeItem(A, B) {Item x = A->item; A->item = B->item; B->item = x;}
 
 // Estrutura
@@ -21,8 +20,6 @@ struct node {
 
 // Variaveis
 
-static link root = NULL;
-
 // Prototipos
 
 int height(link h);
@@ -30,14 +27,19 @@ link rotR(link h);
 link rotL(link h);
 link rotLR(link h);
 link rotRL(link h);
-int balance(link h); // balance factor
-void update_height(link h);
+int balanceFactor(link h); // balance factor
+void updateHeight(link h);
 link newNode(Item item, link left, link right);
+void avlInit(link* root);
+void avlInsert(link* root, Item item);
+void avlSearch(link root, Key v);
+void avlDelete(link* root, Key k); 
+void avlFree(link* root);
 
-Item AVLsearch(link,Item);
-void AVLinsert(link*,Item);
-link AVLdelete(link,Key);
-void AVLsort(link,void (*visit)(Item));
-void AVLfree(link*);
+Item searchR(link,Item);
+link insertR(link h, Item item);
+link deleteR(link h,Key k);
+void sort(link,void (*visit)(Item));
+link freeR(link h);
 
 #endif 
