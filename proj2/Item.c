@@ -14,7 +14,7 @@ void freeItem(Item item) {
 	free(item);
 }
 
-void addItemStock(Item item, Stock value) { //esta fdd !!!!!
+void addItemStock(Item item, long value) { //esta fdd !!!!!
 	long v = item->stock + value;
 	if (v < 0)	item->stock = 0;
 	else		item->stock = v;

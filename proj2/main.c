@@ -7,7 +7,6 @@
 link root;
 
 Key total_keys = 0;
-Key* p_total_keys = &total_keys;
 
 int main() {
 	char c;
@@ -29,7 +28,7 @@ int main() {
 				//executeR();
 				break;
 			case 'x':
-				//executeX();
+				executeX();
 				return 0;
 			default:
 				puts("ERRO: Comando desconhecido.");
@@ -41,7 +40,8 @@ int main() {
 void executeA() {
 	Key key = scanKey();
 	getchar();
-	Stock stock = scanStock(); //esta fdd!!!!!!!
+	long stock; //esta fdd!!!!!!!
+	scanf("%li", &stock);
 	getchar();
 
 	Item a = avlSearch(root, key);
@@ -49,11 +49,16 @@ void executeA() {
 	if (a) 
 		addItemStock(a, stock);
 	else {
-		avlInsert(&root, newItem(key, stock));
-		*p_total_keys++;
+        if (stock < 0) stock = 0;
+		avlInsert(&root, newItem(key, (Stock)stock));
+		total_keys++;
 	}
 }
 
 void executeL() {
 	avlSort(root, printItem); 	
+}
+
+void executeX() {
+    printf("%u\n", total_keys);
 }
