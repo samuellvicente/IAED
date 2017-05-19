@@ -14,14 +14,14 @@ void freeItem(Item item) {
 	free(item);
 }
 
-void addItemStock(Item item, Stock value) {
+void addItemStock(Item item, Stock value) { //esta fdd !!!!!
 	long v = item->stock + value;
 	if (v < 0)	item->stock = 0;
 	else		item->stock = v;
 }
 
-void printKey(Item item) {
-	printf("%" PRIx32 "%u", item->key, item->stock);
+void printItem(Item item) {
+	printf("%08" PRIx32 " %u\n", item->key, item->stock);
 }
 
 Key scanKey() {

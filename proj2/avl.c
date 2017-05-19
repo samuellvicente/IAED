@@ -142,3 +142,14 @@ link freeR(link h) {
 void avlFree(link* root) {
 	*root = freeR(*root);
 }
+
+void sortR(link h, void (*visit)(Item)) {
+	if (h == NULL) return;
+	sortR(h->left, (*visit));
+	(*visit)(h->item);
+	sortR(h->right, (*visit));
+}
+
+void avlSort(link h, void (*visit)(Item)) {
+	sortR(h, visit);
+}

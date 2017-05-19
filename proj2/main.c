@@ -20,7 +20,7 @@ int main() {
 				executeA();
 				break;
 			case 'l':
-				//executeL();
+				executeL();
 				break;
 			case 'm':
 				//executeM();
@@ -41,7 +41,7 @@ int main() {
 void executeA() {
 	Key key = scanKey();
 	getchar();
-	Stock stock = scanStock();
+	Stock stock = scanStock(); //esta fdd!!!!!!!
 	getchar();
 
 	Item a = avlSearch(root, key);
@@ -53,7 +53,7 @@ void executeA() {
 		*p_total_keys++;
 	}
 }
-/*
+
 void executeL() {
-	
-}*/
+	avlSort(root, printItem); 	
+}
