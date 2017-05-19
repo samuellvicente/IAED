@@ -60,13 +60,11 @@ void executeL() {
 void executeR() {
 	Key key = scanKey();
 	getchar();
-
 	avlDelete(&root, key);
 
 }
 
 void executeX() {
-	printf("%" PRIx32 "\n", avlFree(&root));
-
+	printCounter(avlFree(&root));
 }
 
