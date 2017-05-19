@@ -40,7 +40,7 @@ int main() {
 void executeA() {
 	Key key = scanKey();
 	getchar();
-	long stock; //esta fdd!!!!!!!
+	long stock;
 	scanf("%li", &stock);
 	getchar();
 
@@ -49,8 +49,7 @@ void executeA() {
 	if (a) 
 		addItemStock(a, stock);
 	else {
-        if (stock < 0) stock = 0;
-		avlInsert(&root, newItem(key, (Stock)stock));
+		avlInsert(&root, createNewItem(key, stock));
 		total_keys++;
 	}
 }
@@ -60,5 +59,6 @@ void executeL() {
 }
 
 void executeX() {
+	avlFree(&root);
     printf("%u\n", total_keys);
 }

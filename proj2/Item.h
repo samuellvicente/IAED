@@ -2,6 +2,8 @@
 #define __ITEM__
 
 #include <stdint.h>
+#include <stdlib.h>
+#include <math.h>
 
 // Macros
 
@@ -23,6 +25,7 @@ struct product {
 // Prototipos
 
 Item newItem(Key key, Stock stock);
+Item createNewItem (Key key, long stock);
 void freeItem(Item item);
 void addItemStock(Item item, long value);
 void printItem(Item item);
@@ -31,4 +34,3 @@ Key scanKey();
 Stock scanStock();
 
 #endif 
-
