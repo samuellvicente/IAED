@@ -27,7 +27,7 @@ link rotR(link h);
 link rotL(link h);
 link rotLR(link h);
 link rotRL(link h);
-int balanceFactor(link h); // balance factor
+int balanceFactor(link h);
 void updateHeight(link h);
 link newNode(Item item, link left, link right);
 void avlInit(link* root);

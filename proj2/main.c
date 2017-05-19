@@ -6,11 +6,10 @@
 
 link root;
 
-Key total_keys = 0;
-
 int main() {
 	char c;
 	avlInit(&root);
+
 	while (1) {
 		c = getchar();
 		getchar();
@@ -25,7 +24,7 @@ int main() {
 				//executeM();
 				break;
 			case 'r':
-				//executeR();
+				executeR();
 				break;
 			case 'x':
 				executeX();
@@ -50,7 +49,6 @@ void executeA() {
 		addItemStock(a, stock);
 	else {
 		avlInsert(&root, createNewItem(key, stock));
-		total_keys++;
 	}
 }
 
@@ -58,7 +56,15 @@ void executeL() {
 	avlSort(root, printItem); 	
 }
 
+void executeR() {
+	Key key = scanKey();
+	getchar();
+
+	avlDelete(&root, key);
+
+}
+
 void executeX() {
 	avlFree(&root);
-    printf("%u\n", total_keys);
 }
+
