@@ -3,6 +3,7 @@
 #include "header.h" 
 #include "Item.h"
 #include "avl.h"
+#include <inttypes.h>
 
 link root;
 
@@ -65,6 +66,7 @@ void executeR() {
 }
 
 void executeX() {
-	avlFree(&root);
+	printf("%" PRIx32 "\n", avlFree(&root));
+
 }
 

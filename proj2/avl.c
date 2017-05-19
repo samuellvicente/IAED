@@ -132,15 +132,18 @@ void avlDelete(link* root, Key k) {
 	*root = deleteR(*root, k);
 }
 
-link freeR(link h) {
+link freeR(link h, Key* count) {
     if (h==NULL)		return h;
-    h->left = freeR(h->left);
-    h->right = freeR(h->right);
+    h->left = freeR(h->left, count);
+    h->right = freeR(h->right, count);
+	(*count)++;
     return deleteR(h,key(h->item));
 }
 
-void avlFree(link* root) {
-	*root = freeR(*root);
+Key avlFree(link* root) {
+	Key count = 0;
+	*root = freeR(*root, &count);
+	return count;
 }
 
 void sortR(link h, void (*visit)(Item)) {
