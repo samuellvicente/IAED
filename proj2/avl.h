@@ -18,14 +18,10 @@ struct node {
 	int height;
 };
 
-typedef struct delete_info* Delete_info;
 
-struct delete_info {
-	link root;
-	Key count;
-};
 
 // Variaveis
+typedef Key Counter; 
 
 // Prototipos
 
@@ -41,7 +37,7 @@ void avlInit(link* root);
 void avlInsert(link* root, Item item);
 Item avlSearch(link root, Key v);
 void avlDelete(link* root, Key k); 
-Key avlFree(link* root);
+Counter avlFree(link* root);
 void avlSort(link h, void (*visit)(Item));
 void sortR(link h, void (*visit)(Item));
 
@@ -50,4 +46,5 @@ link insertR(link h, Item item);
 link deleteR(link h,Key k);
 link freeR(link h, Key* count);
 
+void printCounter(Counter counter);
 #endif 

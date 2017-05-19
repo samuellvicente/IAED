@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <stdio.h>
+#include <inttypes.h>
 #include "avl.h"
 #include "Item.h"
 
@@ -132,16 +134,18 @@ void avlDelete(link* root, Key k) {
 	*root = deleteR(*root, k);
 }
 
-link freeR(link h, Key* count) {
+link freeR(link h, Counter* count) {
     if (h==NULL)		return h;
     h->left = freeR(h->left, count);
     h->right = freeR(h->right, count);
+	// sempre que remove node adiciona ao count
 	(*count)++;
     return deleteR(h,key(h->item));
 }
 
-Key avlFree(link* root) {
-	Key count = 0;
+Counter avlFree(link* root) {
+	// armazena o numero de nodes libertados da arvore
+	Counter count = 0;
 	*root = freeR(*root, &count);
 	return count;
 }
@@ -156,3 +160,8 @@ void sortR(link h, void (*visit)(Item)) {
 void avlSort(link h, void (*visit)(Item)) {
 	sortR(h, visit);
 }
+
+void printCounter(Counter counter) {
+	printf("%" PRIx32 "\n", counter);
+}
+
