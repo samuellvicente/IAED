@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -o armazem -Wall *.c
+gcc -g -o armazem -Wall *.c
