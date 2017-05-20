@@ -5,9 +5,6 @@
 #include "Item.h"
 #include "avl.h"
 
-// MACROS
-
-
 // VARIAVEIS GLOBAIS
 
 Item max_item = NULL;
@@ -20,7 +17,7 @@ void executeL();
 void executeM();
 void executeR();
 void executeX();
-void findMax(Item item);
+void updateMax(Item item);
 
 #endif
 

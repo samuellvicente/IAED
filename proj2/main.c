@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <inttypes.h>
 #include "header.h" 
 #include "Item.h"
 #include "avl.h"
-#include <inttypes.h>
 
 int main() {
 	char c;
@@ -38,37 +38,49 @@ int main() {
 void executeA() {
 	Key key = scanKey();
 	getchar();
+
 	long stock;
 	scanf("%li", &stock);
 	getchar();
 
+	// Procura key na arvore
 	Item a = avlSearch(root, key);
 
-	
+	// Caso encontre
 	if (a != NULL) { 
 		addItemStock(a, stock);
+
+		// Se subtrair ao max_item nao podemos garantir a sua integridade
 		if (stock < 0 && max_item == a)
 			max_item = NULL;
-		if (max_item != NULL && (less(stock(max_item), stock(a)) || (equal(stock(max_item), stock(a)) && less(key(a), key(max_item))))) {
+		// Casos abaixo garante que "a" sera o novo max_item
+		else if (max_item != NULL && 
+				(less(stock(max_item), stock(a)) || (equal(stock(max_item), stock(a)) && less(key(a), key(max_item))))) 
 			max_item = a;
-		}
 	}
+	// Caso nao encontre
 	else {
 		a = createNewItem(key, stock);
-		if (root == NULL || (root != NULL && max_item != NULL && (less(stock(max_item), stock(a)) || (equal(stock(max_item), stock(a)) && less(key(a), key(max_item))))))
+
+		// Casos abaixo garantem que "a" sera o novo max_item
+		if (root == NULL
+		|| (root != NULL && max_item != NULL && (less(stock(max_item), stock(a)) 
+		|| (equal(stock(max_item), stock(a)) && less(key(a), key(max_item))))))
 			max_item = a;
+
 		avlInsert(&root, a);
 	}
 }
 
 void executeL() {
-	avlSort(root, printItem); 	
+	avlSort(root, printItem);
 }
 
 void executeR() {
 	Key key = scanKey();
 	getchar();
-	//previne segmentation fault
+
+	// Se o maior for removido nao sabemos qual e' o novo max_item
 	if (max_item != NULL && equal(key(max_item), key)) 
 		max_item = NULL;
 	
@@ -76,11 +88,13 @@ void executeR() {
 }
 
 void executeM() {
+	// Determina o max_item
 	if (root == NULL)
 		max_item = NULL;
 	else if (max_item == NULL)
-		avlSort(root, findMax);
+		avlSort(root, updateMax);
 
+	// Imprime se existir
 	if (max_item != NULL) 
 		printItem(max_item);
 }
@@ -89,7 +103,7 @@ void executeX() {
 	printCounter(avlFree(&root));
 }
 
-void findMax(Item item) {
+void updateMax(Item item) {
 	if((max_item != NULL && less(stock(max_item), stock(item))) || max_item == NULL)
 		max_item = item;
 }
