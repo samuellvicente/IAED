@@ -56,7 +56,7 @@ void executeA() {
 	
 	if (a != NULL) { 
 		addItemStock(a, stock);
-		if ((stock < 0 && max_item == a)
+		if (stock < 0 && max_item == a)
 			max_item = NULL;
 		if (max_item != NULL && (less(stock(max_item), stock(a)) || (equal(stock(max_item), stock(a)) && less(key(a), key(max_item))))) {
 			max_item = a;
