@@ -58,19 +58,13 @@ void executeA() {
 		addItemStock(a, stock);
 		if (stock < 0 && max_item == a)
 			max_item = NULL;
-			avlSort(root, findMax);
-		if (less(stock(max_item), stock(a)) || (equal(stock(max_item), stock(a)) && less(key(a), key(max_item)))) {
+		if (max_item != NULL && (less(stock(max_item), stock(a)) || (equal(stock(max_item), stock(a)) && less(key(a), key(max_item))))) {
 			max_item = a;
-			if (root != NULL && max_item == NULL)
-				avlSort(root, findMax); 
 		}
 	}
 	else {
-		if (root != NULL && max_item == NULL)
-			avlSort(root, findMax); 
- 
 		a = createNewItem(key, stock);
-		if (root == NULL || less(stock(max_item), stock(a)) || (equal(stock(max_item), stock(a)) && less(key(a), key(max_item))))
+		if (root == NULL || (root != NULL && max_item != NULL && (less(stock(max_item), stock(a)) || (equal(stock(max_item), stock(a)) && less(key(a), key(max_item))))))
 			max_item = a;
 		avlInsert(&root, a);
 	}
@@ -84,13 +78,11 @@ void executeR() {
 	Key key = scanKey();
 	getchar();
 	//previne segmentation fault
-	if (max_item != NULL && equal(key(max_item), key)) {
-		avlDelete(&root, key);
+	if (max_item != NULL && equal(key(max_item), key)) 
 		max_item = NULL;
 		// avlSort(root, findMax);
-	}
-	else 
-		avlDelete(&root, key);
+	
+	avlDelete(&root, key);
 }
 
 void executeM() {
