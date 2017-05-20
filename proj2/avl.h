@@ -18,37 +18,35 @@ struct node {
 	int height;
 };
 
-
-
 // Variaveis
+
 typedef Key Counter; 
 
 // Prototipos
 
 int height(link h);
+int balanceFactor(link h);
+link balance(link h);
+link newNode(Item item, link left, link right);
 link rotR(link h);
 link rotL(link h);
 link rotLR(link h);
 link rotRL(link h);
-int balanceFactor(link h);
-void updateHeight(link h);
-link newNode(Item item, link left, link right);
-void avlInit(link* root);
-void avlInsert(link* root, Item item);
-Item avlSearch(link root, Key v);
-void avlDelete(link* root, Key k); 
-Counter avlFree(link* root);
-void avlSort(link h, void (*visit)(Item));
-void sortR(link h, void (*visit)(Item));
-
-Item searchR(link h, Key v);
 link insertR(link h, Item item);
 link deleteR(link h,Key k);
 link freeR(link h, Key* count);
+void sortR(link h, void (*visit)(Item));
+Item searchR(link h, Key v);
+void updateHeight(link h);
+link max(link h);
 
-Counter countR(link h);
-Counter avlCount(link root);
-
+void avlInit(link* root);
+void avlInsert(link* root, Item item);
+void avlDelete(link* root, Key k); 
+Counter avlFree(link* root);
+void avlSort(link h, void (*visit)(Item));
+Item avlSearch(link root, Key v);
 
 void printCounter(Counter counter);
+
 #endif 

@@ -14,25 +14,43 @@ int balanceFactor(link h) {
     return height(h->left) - height(h->right);
 }
 
-void updateHeight(link h) {
-	int height_left = height(h->left);
-	int height_right = height(h->right);
-	h->height = height_left > height_right ?  height_left + 1 : height_right + 1;
+link balance(link h) {
+	if (h == NULL) return h;
+	int balance_factor = balanceFactor(h);
+	if(balance_factor > 1) {
+		if (balanceFactor(h->left) >= 0)	h = rotR(h);
+		else								h = rotLR(h);
+	} else if(balance_factor < -1) {
+		if (balanceFactor(h->right) <= 0)	h = rotL(h);
+		else								h = rotRL(h);
+	} else {
+		updateHeight(h);
+	}
+	return h; 
 }
 
-link rotL(link h) {
-	link x = h->right;
-	h->right = x->left;
-	x->left = h;
-	updateHeight(h);
-	updateHeight(x);
-	return x;
+link newNode(Item item, link left, link right) {
+	link new = (link)malloc(sizeof(struct node));
+	new->item = item;
+	new->left = left;
+	new->right = right;
+	new->height = 1;
+	return new;
 }
 
 link rotR(link h) {
 	link x = h->left;
 	h->left = x->right;
 	x->right = h;
+	updateHeight(h);
+	updateHeight(x);
+	return x;
+}
+
+link rotL(link h) {
+	link x = h->right;
+	h->right = x->left;
+	x->left = h;
 	updateHeight(h);
 	updateHeight(x);
 	return x;
@@ -50,50 +68,6 @@ link rotRL(link h) {
 	return rotL(h);
 }
 
-link newNode(Item item, link left, link right) {
-	link new = (link)malloc(sizeof(struct node));
-	new->item = item;
-	new->left = left;
-	new->right = right;
-	new->height = 1;
-	return new;
-}
-
-void avlInit(link* root) {
-	*root = NULL;
-}
-
-link max(link h) {
-	if (h == NULL || h->right == NULL)	return h;
-	else								return max(h->right);
-} 
-
-link balance(link h) {
-	if (h == NULL) return h;
-	int balance_factor = balanceFactor(h);
-	if(balance_factor > 1) {
-		if (balanceFactor(h->left) >= 0)	h = rotR(h);
-		else								h = rotLR(h);
-	} else if(balance_factor < -1) {
-		if (balanceFactor(h->right) <= 0)	h = rotL(h);
-		else								h = rotRL(h);
-	} else {
-		updateHeight(h);
-	}
-	return h; 
-}
-
-Item searchR(link h, Key v) {
-	if (h == NULL)				return NULL;
-	if (equal(v, key(h->item)))	return h->item;
-	if (less(v, key(h->item)))	return searchR(h->left, v);
-	else						return searchR(h->right, v);
-} 
-
-Item avlSearch(link root, Key v) {
-	return searchR(root, v);
-}
-
 link insertR(link h, Item item) {
 	if (h == NULL)						return newNode(item, NULL, NULL);
 	if (less(key(item), key(h->item)))	h->left = insertR(h->left, item);
@@ -101,10 +75,6 @@ link insertR(link h, Item item) {
 
 	h=balance(h);
 	return h; 
-}
-
-void avlInsert(link* root, Item item) {
-	*root = insertR(*root, item);
 }
 
 link deleteR(link h, Key k) {
@@ -130,10 +100,6 @@ link deleteR(link h, Key k) {
 	return h;
 }
 
-void avlDelete(link* root, Key k) {
-	*root = deleteR(*root, k);
-}
-
 link freeR(link h, Counter* count) {
     if (h==NULL)		return h;
     h->left = freeR(h->left, count);
@@ -143,21 +109,6 @@ link freeR(link h, Counter* count) {
     return deleteR(h,key(h->item));
 }
 
-Counter avlFree(link* root) {
-	// armazena o numero de nodes libertados da arvore
-	Counter count = 0;
-	*root = freeR(*root, &count);
-	return count;
-}
-
-Counter countR(link h){
-    if (h==NULL) return 0;
-    else return countR(h->right)+countR(h->left)+1;
-}
-Counter avlCount(link root){
-    return countR(root);
-}
-
 void sortR(link h, void (*visit)(Item)) {
 	if (h == NULL) return;
 	sortR(h->left, (*visit));
@@ -165,11 +116,51 @@ void sortR(link h, void (*visit)(Item)) {
 	sortR(h->right, (*visit));
 }
 
+Item searchR(link h, Key v) {
+	if (h == NULL)				return NULL;
+	if (equal(v, key(h->item)))	return h->item;
+	if (less(v, key(h->item)))	return searchR(h->left, v);
+	else						return searchR(h->right, v);
+} 
+
+void updateHeight(link h) {
+	int height_left = height(h->left);
+	int height_right = height(h->right);
+	h->height = height_left > height_right ?  height_left + 1 : height_right + 1;
+}
+
+void avlInit(link* root) {
+	*root = NULL;
+}
+
+void avlInsert(link* root, Item item) {
+	*root = insertR(*root, item);
+}
+
+void avlDelete(link* root, Key k) {
+	*root = deleteR(*root, k);
+}
+
+Counter avlFree(link* root) {
+	// armazena o numero de nodes libertados da arvore
+	Counter count = 0;
+	*root = freeR(*root, &count);
+	return count;
+}
+
 void avlSort(link h, void (*visit)(Item)) {
 	sortR(h, visit);
+}
+
+Item avlSearch(link root, Key v) {
+	return searchR(root, v);
 }
 
 void printCounter(Counter counter) {
 	printf("%" PRIu32 "\n", counter);
 }
 
+link max(link h) {
+	if (h == NULL || h->right == NULL)	return h;
+	else								return max(h->right);
+} 

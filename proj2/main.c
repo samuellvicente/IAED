@@ -1,3 +1,7 @@
+// Samuel Vicente	87704
+// Rafael Branco	87698
+// tg026			20.05.2017
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <inttypes.h>
