@@ -5,15 +5,6 @@
 #include "avl.h"
 #include <inttypes.h>
 
-Item max_item = NULL;
-
-link root;
-
-void findMax(Item item) {
-	if((max_item != NULL && less(stock(max_item), stock(item))) || max_item == NULL)
-		max_item = item;
-}
-
 int main() {
 	char c;
 	avlInit(&root);
@@ -80,7 +71,6 @@ void executeR() {
 	//previne segmentation fault
 	if (max_item != NULL && equal(key(max_item), key)) 
 		max_item = NULL;
-		// avlSort(root, findMax);
 	
 	avlDelete(&root, key);
 }
@@ -99,3 +89,7 @@ void executeX() {
 	printCounter(avlFree(&root));
 }
 
+void findMax(Item item) {
+	if((max_item != NULL && less(stock(max_item), stock(item))) || max_item == NULL)
+		max_item = item;
+}
