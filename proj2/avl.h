@@ -46,5 +46,9 @@ link insertR(link h, Item item);
 link deleteR(link h,Key k);
 link freeR(link h, Key* count);
 
+Counter countR(link h);
+Counter avlCount(link root);
+
+
 void printCounter(Counter counter);
 #endif 

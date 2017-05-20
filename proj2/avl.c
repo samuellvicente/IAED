@@ -150,6 +150,14 @@ Counter avlFree(link* root) {
 	return count;
 }
 
+Counter countR(link h){
+    if (h==NULL) return 0;
+    else return countR(h->right)+countR(h->left)+1;
+}
+Counter avlCount(link root){
+    return countR(root);
+}
+
 void sortR(link h, void (*visit)(Item)) {
 	if (h == NULL) return;
 	sortR(h->left, (*visit));
@@ -162,6 +170,6 @@ void avlSort(link h, void (*visit)(Item)) {
 }
 
 void printCounter(Counter counter) {
-	printf("%" PRIx32 "\n", counter);
+	printf("%" PRIu32 "\n", counter);
 }
 

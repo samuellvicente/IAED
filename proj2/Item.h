@@ -8,6 +8,7 @@
 // Macros
 
 #define key(A) (A->key)
+#define stock(A) (A->stock)
 #define less(A, B) (A < B) 
 #define equal(A, B) (A == B)
 

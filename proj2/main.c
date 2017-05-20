@@ -5,7 +5,14 @@
 #include "avl.h"
 #include <inttypes.h>
 
+Item max_item = NULL;
+
 link root;
+
+void findMax(Item item) {
+	if((max_item != NULL && less(stock(max_item), stock(item))) || max_item == NULL)
+		max_item = item;
+}
 
 int main() {
 	char c;
@@ -22,7 +29,7 @@ int main() {
 				executeL();
 				break;
 			case 'm':
-				//executeM();
+				executeM();
 				break;
 			case 'r':
 				executeR();
@@ -46,10 +53,26 @@ void executeA() {
 
 	Item a = avlSearch(root, key);
 
-	if (a) 
+	
+	if (a != NULL) { 
 		addItemStock(a, stock);
+		if (stock < 0 && max_item == a)
+			max_item = NULL;
+			avlSort(root, findMax);
+		if (less(stock(max_item), stock(a)) || (equal(stock(max_item), stock(a)) && less(key(a), key(max_item)))) {
+			max_item = a;
+			if (root != NULL && max_item == NULL)
+				avlSort(root, findMax); 
+		}
+	}
 	else {
-		avlInsert(&root, createNewItem(key, stock));
+		if (root != NULL && max_item == NULL)
+			avlSort(root, findMax); 
+ 
+		a = createNewItem(key, stock);
+		if (root == NULL || less(stock(max_item), stock(a)) || (equal(stock(max_item), stock(a)) && less(key(a), key(max_item))))
+			max_item = a;
+		avlInsert(&root, a);
 	}
 }
 
@@ -60,8 +83,24 @@ void executeL() {
 void executeR() {
 	Key key = scanKey();
 	getchar();
-	avlDelete(&root, key);
+	//previne segmentation fault
+	if (max_item != NULL && equal(key(max_item), key)) {
+		avlDelete(&root, key);
+		max_item = NULL;
+		// avlSort(root, findMax);
+	}
+	else 
+		avlDelete(&root, key);
+}
 
+void executeM() {
+	if (root == NULL)
+		max_item = NULL;
+	else if (max_item == NULL)
+		avlSort(root, findMax);
+
+	if (max_item != NULL) 
+		printItem(max_item);
 }
 
 void executeX() {

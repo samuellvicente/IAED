@@ -1,0 +1,3 @@
+#!/bin/bash
+
+zip proj2 *.c *.h
