@@ -14,7 +14,7 @@
 
 // Estruturas
 
-typedef uint32_t Key;	// inteiro de 32 bits
+typedef uint32_t Key;	// unsigned int de 32 bits
 typedef unsigned int Stock;
 typedef struct product* Item;
 
@@ -32,7 +32,5 @@ void addItemStock(Item item, long value);
 void printItem(Item item);
 
 Key scanKey();
-
-Stock scanStock(); // nao usado
 
 #endif 

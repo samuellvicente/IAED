@@ -22,11 +22,11 @@ void freeItem(Item item) {
 
 void addItemStock(Item item, long value) { 
 	long long v = item->stock + value;
-	// determina o valor maximo passivel de ser armazenado num tipo Stock 
+	// Determina o valor maximo passivel de ser armazenado num tipo Stock 
 	Stock max_value_stock = (Stock)(pow(2, 8 * sizeof(Stock)) - 1);
 	if (v < 0)							item->stock = 0;
 	else if (v < max_value_stock)		item->stock = v;
-	// previne overflow
+	// Impede que o valor do stock exceda o seu maximo
 	else								item->stock = max_value_stock;
 }
 
@@ -37,11 +37,5 @@ void printItem(Item item) {
 Key scanKey() {
 	Key a;
 	scanf("%" PRIx32, &a);
-	return a;
-}
-
-Stock scanStock() {
-	Stock a;
-	scanf("%u", &a);
 	return a;
 }
